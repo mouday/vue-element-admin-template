@@ -4,9 +4,9 @@ import { resetRouter } from '@/router'
 
 const state = {
   token: getToken(),
-  name: '',
-  avatar: ''
-}
+  name: "",
+  avatar: "user-avatar.gif"
+};
 
 const mutations = {
   SET_TOKEN: (state, token) => {
