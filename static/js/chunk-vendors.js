@@ -71667,8 +71667,8 @@ exports.deprecate = function(fn, msg) {
 var debugs = {};
 var debugEnvRegex = /^$/;
 
-if (({"VUE_APP_MODE":"mock","VUE_APP_BASE_API":"/mock","NODE_ENV":"development","BASE_URL":"/"}).NODE_DEBUG) {
-  var debugEnv = ({"VUE_APP_MODE":"mock","VUE_APP_BASE_API":"/mock","NODE_ENV":"development","BASE_URL":"/"}).NODE_DEBUG;
+if (({"VUE_APP_MODE":"mock","VUE_APP_BASE_API":"/mock","VUE_APP_PUBLIC_PATH":"/vue-element-admin-template/","NODE_ENV":"development","BASE_URL":"/vue-element-admin-template/"}).NODE_DEBUG) {
+  var debugEnv = ({"VUE_APP_MODE":"mock","VUE_APP_BASE_API":"/mock","VUE_APP_PUBLIC_PATH":"/vue-element-admin-template/","NODE_ENV":"development","BASE_URL":"/vue-element-admin-template/"}).NODE_DEBUG;
   debugEnv = debugEnv.replace(/[|\\{}()[\]^$+?.]/g, '\\$&')
     .replace(/\*/g, '.*')
     .replace(/,/g, '$|^')

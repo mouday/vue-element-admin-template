@@ -11361,7 +11361,7 @@ module.exports = /*#__PURE__*/JSON.parse('{"code":0,"msg":"success","data":{"tok
 /******/ 	
 /******/ 	/* webpack/runtime/publicPath */
 /******/ 	!function() {
-/******/ 		__webpack_require__.p = "/";
+/******/ 		__webpack_require__.p = "/vue-element-admin-template/";
 /******/ 	}();
 /******/ 	
 /******/ 	/* webpack/runtime/jsonp chunk loading */
