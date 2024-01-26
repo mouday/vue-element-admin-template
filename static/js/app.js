@@ -2552,7 +2552,11 @@ var _default = exports["default"] = {
     Hamburger: _Hamburger.default
   },
   computed: {
-    ...(0, _vuex.mapGetters)(['sidebar', 'avatar'])
+    ...(0, _vuex.mapGetters)({
+      sidebar: 'sidebar',
+      avatar: 'avatar',
+      userInfo: 'user/getUserInfo'
+    })
   },
   methods: {
     toggleSideBar() {
@@ -4109,7 +4113,9 @@ var render = exports.render = function render() {
     staticClass: "breadcrumb-container"
   }), _c("div", {
     staticClass: "right-menu"
-  }, [_c("el-dropdown", {
+  }, [_vm.userInfo ? _c("span", {
+    staticClass: "right-menu__username"
+  }, [_c("span", [_vm._v(_vm._s(_vm.userInfo.username))])]) : _vm._e(), _c("el-dropdown", {
     staticClass: "avatar-container",
     attrs: {
       trigger: "click"
@@ -7418,6 +7424,7 @@ exports.resetRouter = resetRouter;
 var _interopRequireWildcard2 = _interopRequireDefault(__webpack_require__(/*! ./node_modules/.pnpm/@babel+runtime@7.23.9/node_modules/@babel/runtime/helpers/interopRequireWildcard.js */ "./node_modules/.pnpm/@babel+runtime@7.23.9/node_modules/@babel/runtime/helpers/interopRequireWildcard.js"));
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/.pnpm/vue@2.7.16/node_modules/vue/dist/vue.runtime.esm.js"));
 var _vueRouter = _interopRequireDefault(__webpack_require__(/*! vue-router */ "./node_modules/.pnpm/vue-router@3.6.5_vue@2.7.16/node_modules/vue-router/dist/vue-router.common.js"));
+var _settings = _interopRequireDefault(__webpack_require__(/*! ../settings.js */ "./src/settings.js"));
 var _layout = _interopRequireDefault(__webpack_require__(/*! @/layout */ "./src/layout/index.vue"));
 _vue.default.use(_vueRouter.default);
 
@@ -7448,79 +7455,79 @@ _vue.default.use(_vueRouter.default);
  * all roles can be accessed
  */
 const constantRoutes = exports.constantRoutes = [{
-  path: "/login",
+  path: '/login',
   component: () => Promise.resolve().then(() => (0, _interopRequireWildcard2.default)(__webpack_require__(/*! @/views/login/index */ "./src/views/login/index.vue"))),
   hidden: true
 }, {
-  path: "/404",
+  path: '/404',
   component: () => Promise.resolve().then(() => (0, _interopRequireWildcard2.default)(__webpack_require__(/*! @/views/404 */ "./src/views/404.vue"))),
   hidden: true
 }, {
-  path: "/",
+  path: '/',
   component: _layout.default,
-  redirect: "/dashboard",
+  redirect: '/dashboard',
   children: [{
-    path: "/dashboard",
-    name: "Dashboard",
+    path: '/dashboard',
+    name: 'Dashboard',
     component: () => Promise.resolve().then(() => (0, _interopRequireWildcard2.default)(__webpack_require__(/*! @/views/dashboard/index */ "./src/views/dashboard/index.vue"))),
     meta: {
-      title: "控制台",
-      icon: "dashboard"
+      title: _settings.default.title,
+      icon: 'dashboard'
     }
   }]
 }, {
-  path: "/example",
+  path: '/example',
   component: _layout.default,
-  redirect: "/example/table",
-  name: "Example",
+  redirect: '/example/table',
+  name: 'Example',
   meta: {
-    title: "数据",
-    icon: "example"
+    title: '数据',
+    icon: 'example'
   },
   children: [{
-    path: "table",
-    name: "Table",
+    path: 'table',
+    name: 'Table',
     component: () => Promise.resolve().then(() => (0, _interopRequireWildcard2.default)(__webpack_require__(/*! @/views/table/index */ "./src/views/table/index.vue"))),
     meta: {
-      title: "列表",
-      icon: "table"
+      title: '列表',
+      icon: 'table'
     }
   }, {
-    path: "tree",
-    name: "Tree",
+    path: 'tree',
+    name: 'Tree',
     component: () => Promise.resolve().then(() => (0, _interopRequireWildcard2.default)(__webpack_require__(/*! @/views/tree/index */ "./src/views/tree/index.vue"))),
     meta: {
-      title: "分类",
-      icon: "tree"
+      title: '分类',
+      icon: 'tree'
     }
   }]
 }, {
-  path: "/form",
+  path: '/form',
   component: _layout.default,
   children: [{
-    path: "index",
-    name: "Form",
+    path: 'index',
+    name: 'Form',
     component: () => Promise.resolve().then(() => (0, _interopRequireWildcard2.default)(__webpack_require__(/*! @/views/form/index */ "./src/views/form/index.vue"))),
     meta: {
-      title: "表单",
-      icon: "form"
+      title: '表单',
+      icon: 'form'
     }
   }]
 }, {
-  path: "external-link",
+  path: 'external-link',
   component: _layout.default,
   children: [{
-    path: "https://panjiachen.github.io/vue-element-admin-site/#/",
+    path: 'https://panjiachen.github.io/vue-element-admin-site/#/',
     meta: {
-      title: "外链",
-      icon: "link"
+      title: '外链',
+      icon: 'link'
     }
   }]
 },
 // 404 page must be placed at the end !!!
 {
-  path: "*",
-  redirect: "/404",
+  path: '*',
+  redirect: '/404',
   hidden: true
 }];
 const createRouter = () => new _vueRouter.default({
@@ -7548,7 +7555,7 @@ var _default = exports["default"] = router;
 /***/ (function(module) {
 
 module.exports = {
-  title: 'Vue Admin Template',
+  title: 'Vue Admin',
   /**
    * @type {boolean} true | false
    * @description Whether fix the header
@@ -7768,7 +7775,8 @@ var _default = exports["default"] = {
   },
   getters: {
     hasPermission: state => true,
-    hasUserInfo: state => state.userInfo && state.userInfo.username
+    hasUserInfo: state => state.userInfo && state.userInfo.username,
+    getUserInfo: state => state.userInfo
   },
   mutations: {
     SET_TOKEN: (state, token) => {
@@ -8433,7 +8441,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_pnpm_css_loader_6_9_1_webpack_5_90_0_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_pnpm_css_loader_6_9_1_webpack_5_90_0_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".navbar {\n  height: 50px;\n  overflow: hidden;\n  position: relative;\n  background: #fff;\n  box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);\n}\n.navbar .hamburger-container {\n  line-height: 46px;\n  height: 100%;\n  float: left;\n  cursor: pointer;\n  transition: background 0.3s;\n  -webkit-tap-highlight-color: transparent;\n}\n.navbar .hamburger-container:hover {\n  background: rgba(0, 0, 0, 0.025);\n}\n.navbar .breadcrumb-container {\n  float: left;\n}\n.navbar .right-menu {\n  float: right;\n  height: 100%;\n  line-height: 50px;\n}\n.navbar .right-menu:focus {\n  outline: none;\n}\n.navbar .right-menu .right-menu-item {\n  display: inline-block;\n  padding: 0 8px;\n  height: 100%;\n  font-size: 18px;\n  color: #5a5e66;\n  vertical-align: text-bottom;\n}\n.navbar .right-menu .right-menu-item.hover-effect {\n  cursor: pointer;\n  transition: background 0.3s;\n}\n.navbar .right-menu .right-menu-item.hover-effect:hover {\n  background: rgba(0, 0, 0, 0.025);\n}\n.navbar .right-menu .avatar-container {\n  margin-right: 30px;\n}\n.navbar .right-menu .avatar-container .avatar-wrapper {\n  margin-top: 5px;\n  position: relative;\n}\n.navbar .right-menu .avatar-container .avatar-wrapper .user-avatar {\n  cursor: pointer;\n  width: 40px;\n  height: 40px;\n  border-radius: 10px;\n}\n.navbar .right-menu .avatar-container .avatar-wrapper .el-icon-caret-bottom {\n  cursor: pointer;\n  position: absolute;\n  right: -20px;\n  top: 25px;\n  font-size: 12px;\n}\n.navbar__user-dropdown .el-dropdown-menu__item {\n  font-size: 12px;\n  line-height: 2;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".navbar {\n  height: 50px;\n  overflow: hidden;\n  position: relative;\n  background: #fff;\n  box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);\n}\n.navbar .hamburger-container {\n  line-height: 46px;\n  height: 100%;\n  float: left;\n  cursor: pointer;\n  transition: background 0.3s;\n  -webkit-tap-highlight-color: transparent;\n}\n.navbar .hamburger-container:hover {\n  background: rgba(0, 0, 0, 0.025);\n}\n.navbar .breadcrumb-container {\n  float: left;\n}\n.navbar .right-menu {\n  float: right;\n  height: 100%;\n  line-height: 50px;\n}\n.navbar .right-menu:focus {\n  outline: none;\n}\n.navbar .right-menu .right-menu-item {\n  display: inline-block;\n  padding: 0 8px;\n  height: 100%;\n  font-size: 18px;\n  color: #5a5e66;\n  vertical-align: text-bottom;\n}\n.navbar .right-menu .right-menu-item.hover-effect {\n  cursor: pointer;\n  transition: background 0.3s;\n}\n.navbar .right-menu .right-menu-item.hover-effect:hover {\n  background: rgba(0, 0, 0, 0.025);\n}\n.navbar .right-menu .avatar-container {\n  margin-right: 30px;\n}\n.navbar .right-menu .avatar-container .avatar-wrapper {\n  position: relative;\n}\n.navbar .right-menu .avatar-container .avatar-wrapper .user-avatar {\n  cursor: pointer;\n  width: 40px;\n  height: 40px;\n  border-radius: 10px;\n  display: block;\n}\n.navbar .right-menu .avatar-container .avatar-wrapper .el-icon-caret-bottom {\n  cursor: pointer;\n  position: absolute;\n  right: -20px;\n  top: 25px;\n  font-size: 12px;\n}\n.navbar .right-menu {\n  display: flex;\n  align-items: center;\n}\n.navbar .right-menu__username {\n  margin-right: 20px;\n  font-size: 12px;\n}\n.navbar__user-dropdown .el-dropdown-menu__item {\n  font-size: 12px;\n  line-height: 2;\n}", ""]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
