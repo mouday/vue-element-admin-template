@@ -135,7 +135,8 @@ export default {
       const res = await this.$http.login(this.loginForm)
 
       if (res.ok) {
-        this.$msg.error('登录成功')
+        this.$msg.success('登录成功')
+
         setToken(res.data.token)
 
         await this.$store.dispatch('user/getUserInfo')
