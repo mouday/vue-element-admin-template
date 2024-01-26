@@ -15,6 +15,14 @@ import router from './router'
 import '@/icons' // icon
 import '@/permission' // permission control
 
+import Http from './api/http.js'
+
+import MoUI from './components/mo-ui/index.js'
+import SingleMessage from './components/mo-ui/message/index.js'
+
+// 导入指令
+import './directives/scroll.js'
+
 /**
  * If you don't want to use mock-server
  * you want to use MockJs for mock api
@@ -28,8 +36,18 @@ import '@/permission' // permission control
 //   mockXHR()
 // }
 
+import { useMock } from '../mock/index.js'
+
+if (process.env.VUE_APP_MODE == 'mock') {
+  useMock()
+}
+
 // set ElementUI lang to EN
 Vue.use(ElementUI, { locale })
+Vue.use(MoUI)
+
+Vue.prototype.$http = Http
+Vue.prototype.$msg = SingleMessage
 
 Vue.config.productionTip = false
 
@@ -37,5 +55,5 @@ new Vue({
   el: '#app',
   router,
   store,
-  render: h => h(App)
+  render: (h) => h(App),
 })

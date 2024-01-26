@@ -39,7 +39,7 @@ export default {
   background-color: #e3e3e3;
 }
 
-/deep/ .table-header-cell {
+::v-deep .table-header-cell {
   background-color: #fafafa;
   height: 40px;
 }

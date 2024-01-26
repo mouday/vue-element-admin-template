@@ -72,6 +72,7 @@
 
 <script>
 import { validatePassword, validateUsername } from '../../utils/validate.js'
+import { setToken } from '../../utils/auth-util.js' // get token from cookie
 
 export default {
   name: 'Login',
@@ -119,21 +120,34 @@ export default {
     handleLogin() {
       this.$refs.loginForm.validate((valid) => {
         if (valid) {
-          this.loading = true
-          this.$store
-            .dispatch('user/login', this.loginForm)
-            .then(() => {
-              this.$router.push({ path: this.redirect || '/' })
-              this.loading = false
-            })
-            .catch(() => {
-              this.loading = false
-            })
+          this.confirmLogin()
         } else {
           console.log('error submit!!')
           return false
         }
       })
+    },
+
+    async confirmLogin() {
+      this.loading = true
+      // 调用登录接口
+
+      const res = await this.$http.login(this.loginForm)
+
+      if (res.ok) {
+        this.$msg.error('登录成功')
+        setToken(res.data.token)
+        
+        await this.$store.dispatch('user/getUserInfo')
+
+        if (this.$store.getters['hasUserInfo']) {
+          this.$router.push({ path: this.redirect || '/' })
+        } else {
+          this.$msg.error('暂无权限')
+        }
+      }
+
+      this.loading = false
     },
   },
 }

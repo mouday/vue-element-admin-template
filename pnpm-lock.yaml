@@ -17,6 +17,7 @@ specifiers:
   js-cookie: 2.2.0
   less: ^4.0.0
   less-loader: ^6.2.0
+  mockjs: ^1.1.0
   node-polyfill-webpack-plugin: ^3.0.0
   normalize.css: 7.0.0
   nprogress: 0.2.0
@@ -61,6 +62,7 @@ devDependencies:
   html-webpack-plugin: 4.5.2_webpack@4.47.0
   less: 4.2.0
   less-loader: 6.2.0_webpack@4.47.0
+  mockjs: 1.1.0
   path-browserify: 1.0.1
   sass: 1.70.0
   sass-loader: 7.3.1_webpack@4.47.0
@@ -6198,6 +6200,13 @@ packages:
     hasBin: true
     dependencies:
       minimist: 1.2.8
+
+  /mockjs/1.1.0:
+    resolution: {integrity: sha512-eQsKcWzIaZzEZ07NuEyO4Nw65g0hdWAyurVol1IPl1gahRwY+svqzfgfey8U8dahLwG44d6/RwEzuK52rSa/JQ==}
+    hasBin: true
+    dependencies:
+      commander: 8.3.0
+    dev: true
 
   /module-alias/2.2.3:
     resolution: {integrity: sha512-23g5BFj4zdQL/b6tor7Ji+QY4pEfNH784BMslY9Qb0UnJWRAt+lQGLYmRaM0KDBwIG23ffEBELhZDP2rhi9f/Q==}
