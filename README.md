@@ -2,6 +2,9 @@
 
 基于 [vue-admin-template](https://github.com/PanJiaChen/vue-admin-template) 改造的一个后台管理模板
 
+- 仓库地址：https://github.com/mouday/vue-element-admin-template
+- 国内仓库：https://gitee.com/mouday/vue-element-admin-template
+
 整合和扩展的内容包括：
 
 - Vue
@@ -16,7 +19,7 @@
 
 ![](img/login.png)
 
-[线上地址](http://panjiachen.github.io/vue-admin-template)
+[线上地址](http://mouday.github.io/vue-element-admin-template)
 
 [国内访问](https://panjiachen.gitee.io/vue-admin-template)
 
