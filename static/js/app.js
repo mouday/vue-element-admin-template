@@ -3060,12 +3060,12 @@ var _default = exports["default"] = {
         this.$msg.error('登录成功');
         (0, _authUtil.setToken)(res.data.token);
         await this.$store.dispatch('user/getUserInfo');
-        if (this.$store.getters['hasUserInfo']) {
+        if (this.$store.getters['user/hasUserInfo']) {
           this.$router.push({
             path: this.redirect || '/'
           });
         } else {
-          this.$msg.error('暂无权限');
+          this.$msg.success('暂无权限');
         }
       }
       this.loading = false;
