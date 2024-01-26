@@ -76,18 +76,9 @@ export default {
 
     // user logout
     logout({ commit, state }) {
-      return new Promise((resolve, reject) => {
-        logout(state.token)
-          .then(() => {
-            commit('SET_TOKEN', '')
-            removeToken()
-            resetRouter()
-            resolve()
-          })
-          .catch((error) => {
-            reject(error)
-          })
-      })
+      commit('SET_USER_INFO', null)
+      removeToken()
+      resetRouter()
     },
 
     // remove token

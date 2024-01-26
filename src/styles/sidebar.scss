@@ -86,10 +86,17 @@
       }
     }
 
-    .el-menu-item, .el-submenu__title {
+    .el-menu-item,
+    .el-submenu__title {
       font-size: $sideBarMenuItemFontSize;
       height: $sideBarMenuItemHeight;
       line-height: $sideBarMenuItemLineHeight;
+      background-color: $menuBg;
+      color: $menuText;
+
+      &.is-active {
+        color: $menuActiveText;
+      }
     }
   }
 
