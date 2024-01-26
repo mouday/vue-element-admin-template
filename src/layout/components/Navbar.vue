@@ -9,6 +9,12 @@
     <breadcrumb class="breadcrumb-container" />
 
     <div class="right-menu">
+      <span
+        v-if="userInfo"
+        class="right-menu__username"
+        ><span>{{ userInfo.username }}</span>
+      </span>
+
       <el-dropdown
         class="avatar-container"
         trigger="click"
@@ -20,6 +26,7 @@
           />
           <i class="el-icon-caret-bottom" />
         </div>
+
         <el-dropdown-menu
           slot="dropdown"
           class="navbar__user-dropdown"
@@ -54,13 +61,17 @@ export default {
     Hamburger,
   },
   computed: {
-    ...mapGetters(['sidebar', 'avatar']),
+    ...mapGetters({
+      sidebar: 'sidebar',
+      avatar: 'avatar',
+      userInfo: 'user/getUserInfo',
+    }),
   },
   methods: {
     toggleSideBar() {
       this.$store.dispatch('app/toggleSideBar')
     },
-    
+
     async logout() {
       await this.$store.dispatch('user/logout')
       this.$router.push(`/login?redirect=${this.$route.fullPath}`)
@@ -125,7 +136,7 @@ export default {
       margin-right: 30px;
 
       .avatar-wrapper {
-        margin-top: 5px;
+        // margin-top: 5px;
         position: relative;
 
         .user-avatar {
@@ -133,6 +144,7 @@ export default {
           width: 40px;
           height: 40px;
           border-radius: 10px;
+          display: block;
         }
 
         .el-icon-caret-bottom {
@@ -144,6 +156,16 @@ export default {
         }
       }
     }
+  }
+
+  .right-menu {
+    display: flex;
+    align-items: center;
+  }
+
+  .right-menu__username {
+    margin-right: 20px;
+    font-size: 12px;
   }
 }
 

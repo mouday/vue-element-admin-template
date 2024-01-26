@@ -16,6 +16,7 @@ export default {
   getters: {
     hasPermission: (state) => true,
     hasUserInfo: (state) => state.userInfo && state.userInfo.username,
+    getUserInfo: (state) => state.userInfo
   },
 
   mutations: {
