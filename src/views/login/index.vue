@@ -137,13 +137,13 @@ export default {
       if (res.ok) {
         this.$msg.error('登录成功')
         setToken(res.data.token)
-        
+
         await this.$store.dispatch('user/getUserInfo')
 
-        if (this.$store.getters['hasUserInfo']) {
+        if (this.$store.getters['user/hasUserInfo']) {
           this.$router.push({ path: this.redirect || '/' })
         } else {
-          this.$msg.error('暂无权限')
+          this.$msg.success('暂无权限')
         }
       }
 

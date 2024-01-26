@@ -19,9 +19,12 @@
 
 ![](img/login.png)
 
-[线上地址](http://mouday.github.io/vue-element-admin-template)
+- 线上地址: http://mouday.github.io/vue-element-admin-template
 
-[国内访问](https://mouday.gitee.io/vue-element-admin-template)
+- 国内访问: https://mouday.gitee.io/vue-element-admin-template
+
+- 账号：admin
+- 密码：123456
 
 ## Extra
 
