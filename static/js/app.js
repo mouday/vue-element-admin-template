@@ -3057,7 +3057,7 @@ var _default = exports["default"] = {
 
       const res = await this.$http.login(this.loginForm);
       if (res.ok) {
-        this.$msg.error('登录成功');
+        this.$msg.success('登录成功');
         (0, _authUtil.setToken)(res.data.token);
         await this.$store.dispatch('user/getUserInfo');
         if (this.$store.getters['user/hasUserInfo']) {
